@@ -6,9 +6,9 @@ void print_char(va_list a);
 void print_int(va_list a);
 void print_float(va_list a);
 void print_string(va_list a);
-
+void print_num(va_list a);
 /**
- * allch - this function prints all characters
+ * _printf - this function prints all characters
  * @format:  format
  * Return: number of characters printed
  */
@@ -24,7 +24,8 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"i", print_int},
 		{"f", print_float},
-		{"s", print_string}
+		{"s", print_string},
+		{"d", print_num}
 	};
 
 	va_start(arg, format);
@@ -35,16 +36,14 @@ int _printf(const char *format, ...)
 		{
 			j = 0;
 
-			while (j < 4 && (*(format + i + 1)) != *(funcs[j].ch))
+			while (j < 5 && (*(format + i + 1)) != *(funcs[j].ch))
 				j++;
-			if (j < 4)
+			if (j < 5)
 			{
 				printf("%s", separator);
 				funcs[j].f(arg);
 				separator = " ";
 			}
-			if (!(format[i + 1] == '%'))
-				i += 2;
 		}
 		putchar(format[i]);
 		i++;
@@ -53,6 +52,17 @@ int _printf(const char *format, ...)
 	va_end(arg);
 	return (count);
 }
+/**
+ * print_num - prints a number
+ * @a: arga passed
+ */
+void print_num(va_list a)
+{
+	int num;
+	num = va_arg(a, int);
+	printf("%d", num);
+}
+
 /**
  * print_char - prints a char
  * @a: args passed
@@ -70,10 +80,10 @@ void print_char(va_list a)
  */
 void print_int(va_list a)
 {
-	int i;
+	int num1;
 
-	i = va_arg(a, int);
-	printf("%d", i);
+	num1 = va_arg(a, int);
+	printf("%d", num1);
 }
 /**
  * print_float - prints a float
