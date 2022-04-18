@@ -7,6 +7,7 @@ void print_int(va_list a);
 void print_float(va_list a);
 void print_string(va_list a);
 void print_num(va_list a);
+void print_per(va_list a);
 /**
  * _printf - this function prints all characters
  * @format:  format
@@ -25,31 +26,26 @@ int _printf(const char *format, ...)
 		{"i", print_int},
 		{"f", print_float},
 		{"s", print_string},
-		{"d", print_num}
+		{"d", print_num},
+		{"%", print_per}
 	};
 
 	va_start(arg, format);
 
 	while (format && format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] != '%')
+		if (format[i] == '%')
 		{
 			j = 0;
 
-			while (j < 5 && (*(format + i + 1)) != *(funcs[j].ch))
+			while (j < 6 && (*(format + i + 1)) != *(funcs[j].ch))
 				j++;
-			if (j < 5)
+			if (j < 6)
 			{
 				printf("%s", separator);
 				funcs[j].f(arg);
 				separator = "";
 			}
-			i += 2;
-		}
-		if (format[i] == '%' && format[i + 1] == '%')
-		{
-			putchar(format[i]);
-			count++;
 			i += 2;
 		}
 		putchar(format[i]);
@@ -58,6 +54,17 @@ int _printf(const char *format, ...)
 	}
 	va_end(arg);
 	return (count);
+}
+/**
+ * print_per - prints percent
+ * @a: args passed
+ */
+void print_per(va_list a)
+{
+	char b = va_arg(a, int);
+
+	b = '%';
+	printf("%c", b);
 }
 /**
  * print_num - prints a number
