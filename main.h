@@ -1,19 +1,35 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
+
 /**
- * struct myPrintf - struct defining a print function
- * @ch:  charcter to a data type
- * @f: function pointing to printing a data type
+ * struct convert - A convert struct
+ * @type: First member
+ * @func: Second member
+ * Description: Define a new type struct } converter
  */
-
-typedef struct myPrintf
+struct convert
 {
-	char *ch;
-	void (*f)(va_list args);
-} printAll;
+	char *type;
+	int (*func)();
+};
 
+/**
+ * converter - Typedef for struct convert
+ */
+typedef struct convert converter;
+
+int _putchar(int ch);
 int _printf(const char *format, ...);
+int _printString(va_list myList);
+int _printFloat(va_list myList);
+int _printInt(va_list myList);
+int _printChar(va_list myList);
+int _printCent(va_list myList);
+int _print_specifier(const char *format, converter myarray[], va_list my_list);
+
 
 #endif
