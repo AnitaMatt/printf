@@ -10,7 +10,7 @@
 
 typedef struct myPrintf
 {
-	char * ch;
+	char *ch;
 	void (*f)(va_list args);
 } printAll;
 
