@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 			{
 				printf("%s", separator);
 				funcs[j].f(arg);
-				separator = " ";
+				separator = "";
 			}
 			i += 2;
 		}
@@ -60,6 +60,7 @@ int _printf(const char *format, ...)
 void print_num(va_list a)
 {
 	int num;
+
 	num = va_arg(a, int);
 	printf("%d", num);
 }
