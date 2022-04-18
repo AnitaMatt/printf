@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 
 	while (format && format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '%')
 		{
 			j = 0;
 
@@ -44,6 +44,11 @@ int _printf(const char *format, ...)
 				funcs[j].f(arg);
 				separator = "";
 			}
+			i += 2;
+		}
+		if (format[i] == '%' && format[i + 1] == '%')
+		{
+			putchar(format[i]);
 			i += 2;
 		}
 		putchar(format[i]);
