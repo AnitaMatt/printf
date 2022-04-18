@@ -44,6 +44,7 @@ int _printf(const char *format, ...)
 				funcs[j].f(arg);
 				separator = " ";
 			}
+			i += 2;
 		}
 		putchar(format[i]);
 		i++;
