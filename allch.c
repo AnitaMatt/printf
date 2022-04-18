@@ -1,5 +1,5 @@
 #include <stdio.h>
-11;rgb:0000/0000/0000#include <stdarg.h>
+#include <stdarg.h>
 #include "main.h"
 
 void print_char(va_list a);
