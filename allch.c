@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdarg.h>
+11;rgb:0000/0000/0000#include <stdarg.h>
 #include "main.h"
 
 void print_char(va_list a);
@@ -59,7 +59,6 @@ int _printf(const char *format, ...)
 void print_num(va_list a)
 {
 	int num;
-	
 	num = va_arg(a, int);
 	printf("%d", num);
 }
