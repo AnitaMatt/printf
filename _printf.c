@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"f", _printFloat},
 		{"c", _printChar},
 		{"%", _printCent},
+		{"d", _printNum};
 		{NULL, NULL}
 	};
 
