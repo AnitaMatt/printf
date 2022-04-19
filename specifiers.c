@@ -58,7 +58,17 @@ int _printInt(va_list myList)
 	int length = _print_number(myList);
 	return (length);
 }
-
+/**
+ * _printNum - Function entry
+ * Description: A function that print the int type
+ * @myList: va_list passed to the function
+ * Return: See nothing!
+ */
+int _printNum(va_list myList)
+{
+	int len = _print_number(myList);
+	return (len);
+}
 
 /**
  * _printChar - Function entry
