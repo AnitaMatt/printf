@@ -15,11 +15,9 @@ int _print_specifier(const char *format, converter myarray[], va_list my_list)
 
 	while (format && format[i] != '\0')
 	{
-
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			int j = 0;
-			int ret_count = 0;
+			int j = 0, ret_count = 0;
 
 			while ((*(myarray + j)).type != NULL)
 			{
@@ -33,7 +31,17 @@ int _print_specifier(const char *format, converter myarray[], va_list my_list)
 				}
 				j++;
 			}
-			i++;
+			if (myarray[j].type == NULL && format[i + 1] != ' ')
+			{
+				if (format[i + 1] != '\0')
+				{
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					count += 2;
+				}
+				else
+					return (-1);
+			} i++;
 		}
 		else
 		{
@@ -43,7 +51,6 @@ int _print_specifier(const char *format, converter myarray[], va_list my_list)
 		i++;
 	}
 	return (count);
-
 }
 
 /**
