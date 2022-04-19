@@ -27,6 +27,7 @@ int _printf(const char *format, ...);
 int _printString(va_list myList);
 int _printFloat(va_list myList);
 int _printInt(va_list myList);
+int _printNum(va_list myList);
 int _printChar(va_list myList);
 int _printCent(va_list myList);
 int _print_specifier(const char *format, converter myarray[], va_list my_list);
