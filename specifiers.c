@@ -55,8 +55,8 @@ int _printFloat(va_list myList)
  */
 int _printInt(va_list myList)
 {
-	printf("%d", va_arg(myList, int));
-	return (1);
+	int length = _print_number(myList);
+	return (length);
 }
 
 
